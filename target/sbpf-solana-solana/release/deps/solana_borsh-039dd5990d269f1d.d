@@ -1,0 +1,11 @@
+/mnt/d/workspace_new/vesting/target/sbpf-solana-solana/release/deps/libsolana_borsh-039dd5990d269f1d.rmeta: /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/lib.rs /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/deprecated.rs /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/macros.rs /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/v0_10.rs /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/v1.rs
+
+/mnt/d/workspace_new/vesting/target/sbpf-solana-solana/release/deps/libsolana_borsh-039dd5990d269f1d.rlib: /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/lib.rs /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/deprecated.rs /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/macros.rs /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/v0_10.rs /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/v1.rs
+
+/mnt/d/workspace_new/vesting/target/sbpf-solana-solana/release/deps/solana_borsh-039dd5990d269f1d.d: /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/lib.rs /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/deprecated.rs /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/macros.rs /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/v0_10.rs /home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/v1.rs
+
+/home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/lib.rs:
+/home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/deprecated.rs:
+/home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/macros.rs:
+/home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/v0_10.rs:
+/home/ace3/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-borsh-2.2.1/src/v1.rs:

@@ -1,0 +1,1605 @@
+{
+  "address": "DcjmKSSKNxbSAwBQZx8wSAhosxBxQoyz3DdXuysMiPTy",
+  "metadata": {
+    "name": "vesting",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "append_yearly_plan",
+      "discriminator": [
+        246,
+        108,
+        234,
+        236,
+        199,
+        128,
+        43,
+        170
+      ],
+      "accounts": [
+        {
+          "name": "vesting_account",
+          "writable": true
+        },
+        {
+          "name": "plan_chunk",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  110,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "vesting_account"
+              }
+            ]
+          }
+        },
+        {
+          "name": "parent_plan_chunk",
+          "writable": true,
+          "optional": true
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "admin_config"
+          ]
+        },
+        {
+          "name": "admin_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "plans",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "YearlyPlan"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "close_vesting_account",
+      "discriminator": [
+        205,
+        108,
+        128,
+        126,
+        240,
+        179,
+        18,
+        220
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "admin_config"
+          ]
+        },
+        {
+          "name": "admin_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "vesting_account",
+          "writable": true
+        },
+        {
+          "name": "plan_chunk",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  110,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "vesting_account"
+              }
+            ]
+          }
+        },
+        {
+          "name": "beneficiary_vault"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "create_vesting",
+      "discriminator": [
+        135,
+        184,
+        171,
+        156,
+        197,
+        162,
+        246,
+        44
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "admin_config"
+          ]
+        },
+        {
+          "name": "admin_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "token_info",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  105,
+                  110,
+                  102,
+                  111
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "admin"
+              },
+              {
+                "kind": "account",
+                "path": "token_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "beneficiary"
+        },
+        {
+          "name": "vesting_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  101,
+                  115,
+                  116,
+                  105,
+                  110,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "beneficiary"
+              },
+              {
+                "kind": "account",
+                "path": "token_mint"
+              },
+              {
+                "kind": "arg",
+                "path": "params.vesting_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "token_mint"
+        },
+        {
+          "name": "token_vault",
+          "writable": true
+        },
+        {
+          "name": "parent_vault",
+          "writable": true
+        },
+        {
+          "name": "beneficiary_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "beneficiary"
+              },
+              {
+                "kind": "account",
+                "path": "token_mint"
+              },
+              {
+                "kind": "arg",
+                "path": "params.vesting_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "admin"
+              },
+              {
+                "kind": "account",
+                "path": "token_vault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "beneficiary_token_account",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": {
+              "name": "VestingParams"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "do_vesting",
+      "discriminator": [
+        233,
+        226,
+        12,
+        16,
+        184,
+        217,
+        141,
+        59
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "admin_config"
+          ]
+        },
+        {
+          "name": "token_vault",
+          "writable": true
+        },
+        {
+          "name": "vault_authority"
+        },
+        {
+          "name": "origin_token_account",
+          "writable": true
+        },
+        {
+          "name": "destination_token_account",
+          "writable": true
+        },
+        {
+          "name": "vesting_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  101,
+                  115,
+                  116,
+                  105,
+                  110,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "beneficiary"
+              },
+              {
+                "kind": "account",
+                "path": "token_mint"
+              },
+              {
+                "kind": "arg",
+                "path": "params.vesting_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "plan_chunk",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  110,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "vesting_account"
+              }
+            ]
+          }
+        },
+        {
+          "name": "token_info",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  105,
+                  110,
+                  102,
+                  111
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "admin"
+              },
+              {
+                "kind": "account",
+                "path": "token_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "beneficiary"
+        },
+        {
+          "name": "token_mint"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "vesting_time",
+          "type": "i64"
+        },
+        {
+          "name": "params",
+          "type": {
+            "defined": {
+              "name": "VestingParams"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "emergency_stop",
+      "discriminator": [
+        179,
+        143,
+        200,
+        137,
+        108,
+        245,
+        248,
+        35
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "admin_config"
+          ]
+        },
+        {
+          "name": "admin_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "beneficiary"
+        },
+        {
+          "name": "token_mint"
+        },
+        {
+          "name": "vesting_account",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "init_token_info",
+      "discriminator": [
+        191,
+        130,
+        135,
+        59,
+        244,
+        52,
+        37,
+        100
+      ],
+      "accounts": [
+        {
+          "name": "scheduler_admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_info",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  105,
+                  110,
+                  102,
+                  111
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "scheduler_admin"
+              },
+              {
+                "kind": "account",
+                "path": "token_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "token_mint"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "TokenInfoArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "deployer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "deployer_admin",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  112,
+                  108,
+                  111,
+                  121,
+                  95,
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "admin_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_deployer",
+      "discriminator": [
+        148,
+        104,
+        3,
+        122,
+        127,
+        192,
+        10,
+        1
+      ],
+      "accounts": [
+        {
+          "name": "deployer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "deploy_admin",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  112,
+                  108,
+                  111,
+                  121,
+                  95,
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "lockup_vault",
+      "discriminator": [
+        27,
+        108,
+        75,
+        80,
+        73,
+        39,
+        186,
+        192
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "scheduler_admin",
+          "writable": true
+        },
+        {
+          "name": "admin_token_account",
+          "writable": true
+        },
+        {
+          "name": "token_mint"
+        },
+        {
+          "name": "token_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "admin"
+              },
+              {
+                "kind": "account",
+                "path": "token_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "scheduler_admin"
+              },
+              {
+                "kind": "account",
+                "path": "token_vault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "remove_admin",
+      "discriminator": [
+        74,
+        202,
+        71,
+        106,
+        252,
+        31,
+        72,
+        183
+      ],
+      "accounts": [
+        {
+          "name": "deployer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "deployer_admin",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  112,
+                  108,
+                  111,
+                  121,
+                  95,
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true
+        },
+        {
+          "name": "admin_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "update_plan_chunk",
+      "discriminator": [
+        214,
+        7,
+        219,
+        254,
+        74,
+        66,
+        181,
+        102
+      ],
+      "accounts": [
+        {
+          "name": "plan_chunk",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "admin_config"
+          ]
+        },
+        {
+          "name": "admin_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "plans",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "YearlyPlan"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "user_create_vesting",
+      "discriminator": [
+        80,
+        11,
+        183,
+        60,
+        236,
+        81,
+        101,
+        224
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "admin_config"
+          ]
+        },
+        {
+          "name": "admin_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "token_info",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  105,
+                  110,
+                  102,
+                  111
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "admin"
+              },
+              {
+                "kind": "account",
+                "path": "token_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "beneficiary"
+        },
+        {
+          "name": "vesting_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  101,
+                  115,
+                  116,
+                  105,
+                  110,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "beneficiary"
+              },
+              {
+                "kind": "account",
+                "path": "token_mint"
+              },
+              {
+                "kind": "arg",
+                "path": "params.vesting_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "token_mint"
+        },
+        {
+          "name": "token_vault",
+          "writable": true
+        },
+        {
+          "name": "parent_vault",
+          "writable": true
+        },
+        {
+          "name": "beneficiary_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "beneficiary"
+              },
+              {
+                "kind": "account",
+                "path": "token_mint"
+              },
+              {
+                "kind": "arg",
+                "path": "params.vesting_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "admin"
+              },
+              {
+                "kind": "account",
+                "path": "token_vault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "beneficiary_token_account",
+          "writable": true
+        },
+        {
+          "name": "parent_vesting_account",
+          "writable": true
+        },
+        {
+          "name": "parent_plan_chunk",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  110,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "parent_vesting_account"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": {
+              "name": "VestingParams"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "AdminConfig",
+      "discriminator": [
+        156,
+        10,
+        79,
+        161,
+        71,
+        9,
+        62,
+        77
+      ]
+    },
+    {
+      "name": "DeployAdmin",
+      "discriminator": [
+        129,
+        83,
+        22,
+        34,
+        99,
+        160,
+        220,
+        147
+      ]
+    },
+    {
+      "name": "TokenInfo",
+      "discriminator": [
+        109,
+        162,
+        52,
+        125,
+        77,
+        166,
+        37,
+        202
+      ]
+    },
+    {
+      "name": "VestingAccount",
+      "discriminator": [
+        102,
+        73,
+        10,
+        233,
+        200,
+        188,
+        228,
+        216
+      ]
+    },
+    {
+      "name": "VestingPlanChunk",
+      "discriminator": [
+        17,
+        84,
+        141,
+        114,
+        248,
+        103,
+        149,
+        175
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "VestingNotReached",
+      "msg": "Veseting period has not ended yet"
+    },
+    {
+      "code": 6001,
+      "name": "NoTokensToRelease",
+      "msg": "No tokens available for release"
+    },
+    {
+      "code": 6002,
+      "name": "Unauthorized",
+      "msg": "Unauthorized operation"
+    },
+    {
+      "code": 6003,
+      "name": "NotActive",
+      "msg": "Vesting is not active"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidParameters",
+      "msg": "Invalid vesting parameters"
+    },
+    {
+      "code": 6005,
+      "name": "Overflow",
+      "msg": "Add amount is overflow"
+    },
+    {
+      "code": 6006,
+      "name": "NotDeployAdmin",
+      "msg": "You are not the deployer admin."
+    },
+    {
+      "code": 6007,
+      "name": "ParentPlanNotFound",
+      "msg": "No parent vesting plan found."
+    },
+    {
+      "code": 6008,
+      "name": "InsufficientAmount",
+      "msg": "Insufficient amount in the parent vesting plan."
+    },
+    {
+      "code": 6009,
+      "name": "AlreadyReleased",
+      "msg": "Vesting for the specified time has already been completed."
+    },
+    {
+      "code": 6010,
+      "name": "InvalidToken",
+      "msg": "Token not registered in token_info."
+    },
+    {
+      "code": 6011,
+      "name": "VaultNotEmpty",
+      "msg": "Vault must be empty before closing the vesting account."
+    },
+    {
+      "code": 6012,
+      "name": "InvalidMint",
+      "msg": "Invalid Mint"
+    }
+  ],
+  "types": [
+    {
+      "name": "AdminConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DeployAdmin",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "deployer",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokenInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "token_name",
+            "type": "string"
+          },
+          {
+            "name": "token_symbol",
+            "type": "string"
+          },
+          {
+            "name": "total_supply",
+            "type": "u64"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "mint_wallet_address",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokenInfoArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "token_name",
+            "type": "string"
+          },
+          {
+            "name": "token_symbol",
+            "type": "string"
+          },
+          {
+            "name": "total_supply",
+            "type": "u64"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "mint_wallet_address",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VestingAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "beneficiary",
+            "type": "pubkey"
+          },
+          {
+            "name": "total_amount",
+            "type": "u64"
+          },
+          {
+            "name": "released_amount",
+            "type": "u64"
+          },
+          {
+            "name": "start_time",
+            "type": "i64"
+          },
+          {
+            "name": "end_time",
+            "type": "i64"
+          },
+          {
+            "name": "last_release_time",
+            "type": "i64"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "beneficiary_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "category",
+            "type": "string"
+          },
+          {
+            "name": "is_active",
+            "type": "bool"
+          },
+          {
+            "name": "destination_token_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "parent_vault",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VestingParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "vesting_id",
+            "type": "u64"
+          },
+          {
+            "name": "total_amount",
+            "type": "u64"
+          },
+          {
+            "name": "released_amount",
+            "type": "u64"
+          },
+          {
+            "name": "start_time",
+            "type": "i64"
+          },
+          {
+            "name": "end_time",
+            "type": "i64"
+          },
+          {
+            "name": "category",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VestingPlanChunk",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "vesting_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "plans",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "YearlyPlan"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "YearlyPlan",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "release_time",
+            "type": "i64"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "released",
+            "type": "bool"
+          }
+        ]
+      }
+    }
+  ]
+}
